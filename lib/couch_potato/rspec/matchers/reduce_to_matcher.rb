@@ -34,7 +34,9 @@ module CouchPotato
           var reduce = #{view_spec.reduce_function};
           print(print_r({result: reduce(docs, keys, #{@rereduce})}));
         JS
-        @actual_ruby = JSON.parse(run_js(js))['result']
+        data = run_js(js)
+        puts data
+        @actual_ruby = JSON.parse(data)['result']
         @expected_ruby == @actual_ruby
       end
       

@@ -5,7 +5,7 @@ $:.unshift(File.dirname(__FILE__) + '/../lib')
 
 require 'couch_potato'
 
-CouchPotato::Config.database_name = 'couch_potato_test'
+CouchPotato::Config.database_name = 'http://10.23.41.3:5984/couch_potato_test'
 
 class Child
   include CouchPotato::Persistence
@@ -24,8 +24,7 @@ class Comment
 end
 
 def recreate_db
-  CouchPotato.couchrest_database.delete! rescue nil
-  CouchPotato.couchrest_database.server.create_db CouchPotato::Config.database_name
+  CouchPotato.couchrest_database.recreate!
 end
 recreate_db
 
