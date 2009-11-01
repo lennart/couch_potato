@@ -5,7 +5,7 @@ $:.unshift(File.dirname(__FILE__) + '/../lib')
 
 require 'couch_potato'
 
-CouchPotato::Config.database_name = 'http://10.23.41.3:5984/couch_potato_test'
+couchPotato::Config.database_name = 'couch_potato_test'
 
 class Child
   include CouchPotato::Persistence
